@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:login_signup/helper/constants.dart';
@@ -25,14 +26,10 @@ class RegisterController extends GetxController{
           email: email,
           password: password,
         );
-        await fireStore
-            .collection('users')
-            .doc(cred.user!.uid)
-            .set({
-          "name": username,
-          "email" : email,
-          "password" : password,
-        });
+        String? token = await FirebaseMessaging.instance.getToken();
+       saveUserDetails(uid: cred.user!.uid,
+           token: token, username: username,
+           email: email, password: password);
 
         homePage();
 
@@ -59,4 +56,18 @@ class RegisterController extends GetxController{
     DialogHelper.hideLoading();
     Get.offAll(() => HomeView());
   }
+
+  void saveUserDetails({required uid, username, email, password, token}) async{
+    await fireStore
+        .collection('users')
+        .doc(uid)
+        .set({
+      "name": username,
+      "email" : email,
+      "password" : password,
+      "token" : token,
+    });
+
+  }
+
 }

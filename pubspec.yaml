@@ -46,6 +46,10 @@ dependencies:
   pin_code_fields: ^7.3.0
   country_code_picker: ^2.0.2
   google_sign_in: ^5.2.3
+  flutter_facebook_auth: ^4.0.1
+  firebase_messaging: ^11.2.5
+  flutter_local_notifications: ^9.2.0
+  dio: ^4.0.4
 
 dev_dependencies:
   flutter_test:

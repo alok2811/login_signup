@@ -62,20 +62,11 @@ class SocialButtonCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap:onTap,
-      child: Container(
-          padding: const EdgeInsets.all(20.0),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: color,
-          ),
-          child: Icon(
-            icon,
-            size: size,
-            color: iconColor,
-          )), //
-    );
+    return ElevatedButton(onPressed: onTap, child: Icon(icon,size: size,), style: ElevatedButton.styleFrom(
+      shape: const CircleBorder(),
+      primary: color,
+      padding: const EdgeInsets.all(16),
+    ),);
   }
 }
 

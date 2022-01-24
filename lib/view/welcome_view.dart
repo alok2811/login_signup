@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:login_signup/controller/welcome_controller.dart';
 import 'package:login_signup/helper/constants.dart';
-import 'package:login_signup/view/phone_auth_view.dart';
 import 'package:login_signup/widgets/button_widget.dart';
 import 'package:login_signup/widgets/social_button.dart';
 
@@ -72,9 +71,11 @@ class WelcomeView extends StatelessWidget {
                       SocialButtonCircle(color: googleColor, icon: FontAwesomeIcons.google, onTap: () {
                         controller.googleSignIn();
                       },),
-                      SocialButtonCircle(color: facebookColor, icon: FontAwesomeIcons.facebook, onTap: () { },size: 30,),
+                      SocialButtonCircle(color: facebookColor, icon: FontAwesomeIcons.facebook, onTap: () {
+                        controller.handleLogin();
+                      },size: 30,),
                       SocialButtonCircle(color: whatsappColor, icon: Icons.phone_android, onTap: () {
-                        Get.to(() => PhoneAuthView());
+                       controller.phoneAuthPage();
                       },),
                     ],
                   ),
