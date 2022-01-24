@@ -36,7 +36,6 @@ class LoginController extends GetxController{
     }
   }
 
-
   void forgetEmailDialog() async{
 
     Get.dialog(
@@ -92,7 +91,6 @@ class LoginController extends GetxController{
       }
     }
   }
-
 
   void loginPage(){
     Get.to(() => LoginView());
